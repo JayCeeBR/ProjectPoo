@@ -67,8 +67,8 @@ public abstract class People {
     public void setAge(int age) {
         this.age = age;
     }
-    
-    
+ 
+    abstract void submitToDB();
     
     
 }

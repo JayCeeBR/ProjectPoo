@@ -28,4 +28,10 @@ public class Student extends People {
     public void seeMissings(){
         //null
     }
+    
+    @Override
+    void submitToDB(){
+        
+    }
+    
 }

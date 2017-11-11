@@ -55,6 +55,11 @@ public class LoginScreen extends javax.swing.JFrame {
         });
 
         bRegister.setText("Register");
+        bRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRegisterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,11 +115,20 @@ public class LoginScreen extends javax.swing.JFrame {
         
         if(sql.exist("stundent", "a_login", tcUsername.getText().toString()) == true && sql.exist("stundent", "a_senha", tcPass.getText().toString()) == true){
             System.out.println("A");
+            
+        }else if(sql.exist("teacher", "p_login", tcUsername.getText().toString()) == true && sql.exist("teacher", "p_senha", tcPass.getText().toString())){
+            System.out.println("B");
+        }else{
+            System.out.println("End");
         }
         
-        
-        
     }//GEN-LAST:event_bLoginActionPerformed
+
+    private void bRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegisterActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new PassADM().setVisible(true);
+    }//GEN-LAST:event_bRegisterActionPerformed
 
     /**
      * @param args the command line arguments

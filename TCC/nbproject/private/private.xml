@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/jerlyson/Desktop/NetBeansProjects/TCC/src/SQLITE/Main.java</file>
-            <file>file:/home/jerlyson/Desktop/NetBeansProjects/TCC/src/tcc/Teacher.java</file>
-            <file>file:/home/jerlyson/Desktop/NetBeansProjects/TCC/src/Interface/LoginScreen.java</file>
+            <file>file:/home/jerlyson/ProjectPoo/TCC/src/tcc/People.java</file>
+            <file>file:/home/jerlyson/ProjectPoo/TCC/src/Interface/RegisterStudent.java</file>
+            <file>file:/home/jerlyson/ProjectPoo/TCC/src/tcc/Teacher.java</file>
+            <file>file:/home/jerlyson/ProjectPoo/TCC/src/tcc/Student.java</file>
         </group>
     </open-files>
 </project-private>

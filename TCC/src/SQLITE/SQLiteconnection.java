@@ -20,7 +20,7 @@ public class SQLiteconnection {
     
     public boolean Conectar(){
     try{
-        String url = "jdbc:sqlite:/home/jerlyson/Desktop/TCC/sqlite/AS.db";   
+        String url = "jdbc:sqlite:SQDB/AS.db";   
         this.conexao = DriverManager.getConnection(url);
         System.out.println("Conectou");
         

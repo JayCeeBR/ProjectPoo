@@ -77,6 +77,9 @@ public class Teacher extends People {
     }
 
     
-    
+    @Override
+    void submitToDB(){
+        
+    }
     
 }
