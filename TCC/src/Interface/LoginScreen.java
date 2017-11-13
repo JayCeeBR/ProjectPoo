@@ -110,7 +110,7 @@ public class LoginScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
-        // TODO add your handling code here:
+        // Verifica se o nome de usuario e a senha existe
         Main sql = new Main();
         
         if(sql.exist("stundent", "a_login", tcUsername.getText().toString()) == true && sql.exist("stundent", "a_senha", tcPass.getText().toString()) == true){
@@ -125,7 +125,7 @@ public class LoginScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_bLoginActionPerformed
 
     private void bRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegisterActionPerformed
-        // TODO add your handling code here:
+        // Muda para PassADM
         this.setVisible(false);
         new PassADM().setVisible(true);
     }//GEN-LAST:event_bRegisterActionPerformed

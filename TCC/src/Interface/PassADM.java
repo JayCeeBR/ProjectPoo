@@ -79,7 +79,7 @@ public class PassADM extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSubimitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSubimitActionPerformed
-        // TODO add your handling code here:
+        // checa se a senha de adm ta correta e muda para a procima chooseRegister
         if(tcADMPass.getText().equals("123")){
             this.setVisible(false);
             new ChooseToRegister().setVisible(true);

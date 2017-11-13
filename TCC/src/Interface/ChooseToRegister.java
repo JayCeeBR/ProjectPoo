@@ -66,7 +66,7 @@ public class ChooseToRegister extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bChooseStuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bChooseStuActionPerformed
-        // TODO add your handling code here:
+        // muda para RegisterStudent:
         this.setVisible(false);
         new RegisterStudent().setVisible(true);
     }//GEN-LAST:event_bChooseStuActionPerformed
