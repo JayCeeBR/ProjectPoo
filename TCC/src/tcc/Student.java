@@ -11,7 +11,8 @@ package tcc;
  */
 public class Student extends People {
     private String course;
-
+    private String clas;
+    
     
     public String getCourse() {
         return course;
@@ -28,6 +29,10 @@ public class Student extends People {
     public void seeMissings(){
         //null
     }
+    public void creatTable(){
+        
+    }
+    
     
     @Override
     void submitToDB(){

@@ -17,8 +17,7 @@ public class Teacher extends People {
     private String teachingarea;//human sciences, exact sciens etc.
     private String matter;//English, philosophy etc.
     private int salary;
-    private List clss = new ArrayList();
-    
+  
 
    
 

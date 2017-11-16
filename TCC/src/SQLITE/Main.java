@@ -16,7 +16,7 @@ import java.util.List;
 public class Main {
 
     //checa se exist certo abributo no DB
-    public boolean exist(String table, String tag, String text){
+    public boolean exist(String table, String tag, String tagpass,String text, String textpass){
         
         SQLiteconnection cnn = new SQLiteconnection(); 
         
@@ -27,7 +27,7 @@ public class Main {
         
         cnn.Conectar();
         
-        String query = "SELECT * FROM "+ table +";" ;
+        String query = "SELECT * FROM "+ table + ";" ;
         
         statement = cnn.criarStatement();
         
@@ -37,8 +37,9 @@ public class Main {
             while(resultset.next()){
                 
                 String test = resultset.getString(tag);
+                String testPass = resultset.getString(tagpass);
                 
-                if(test.equals(text)){
+                if(test.equals(text) && testPass.equals(textpass)){
                     return true;
                 }               
                     

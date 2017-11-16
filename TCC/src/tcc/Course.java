@@ -14,11 +14,8 @@ public class Course {
     private String name;
     private String coordinating;
     private int workload;
-    private List teachers = new ArrayList();
     
-    public void insertTeacher(Teacher teacher){
-        //null
-    }
+    
 
     public String getName() {
         return name;
