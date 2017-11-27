@@ -8,6 +8,7 @@ package Interface;
 import SQLITE.Main;
 import java.util.List;
 
+
 /**
  *
  * @author jerlyson
@@ -25,6 +26,8 @@ public class RegisterStudent extends javax.swing.JFrame {
         for(String a : main.names){
             cbCourse.addItem(a);
         }
+        
+        
   }
 
     /**
@@ -161,8 +164,21 @@ public class RegisterStudent extends javax.swing.JFrame {
 
     private void btSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSubmitActionPerformed
         // TODO add your handling code here:
+        Main main = new Main();
+
+        if(main.exist("student", "a_login" ,tcLogin.getText()) == true){
+            System.out.println("Esse Login ja existe");
+        }else{
+            
+            
+            
+            
+        }
         
         
+ 
+        
+       
         
     }//GEN-LAST:event_btSubmitActionPerformed
     

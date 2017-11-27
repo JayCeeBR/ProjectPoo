@@ -14,9 +14,101 @@ import java.util.List;
  * @author Jerlyson
  */
 public class Main {
-
-    //checa se exist certo abributo no DB
-    public boolean exist(String table, String tag, String tagpass,String text, String textpass){
+    
+    public boolean exist(String table,String tag, String text){
+        SQLiteconnection cnn = new SQLiteconnection(); 
+        
+        
+        ResultSet resultset = null;
+        Statement statement = null;
+        
+        
+        cnn.Conectar();
+        
+        String query = "SELECT * FROM "+ table + ";" ;
+        
+        statement = cnn.criarStatement();
+        
+        try{
+            resultset = statement.executeQuery(query);
+            
+            while(resultset.next()){
+                
+                String test = resultset.getString(tag);
+                
+                
+                if(test.equals(text)){
+                    return true;
+                }               
+                    
+            }
+                
+            
+        }catch(SQLException e){
+            System.out.println(e);
+        }finally{
+            try{
+                resultset.close();
+                statement.close();
+                cnn.Desconnectar();
+                
+            }catch(SQLException ex){
+                System.out.println("Erro no fechamento");
+            }
+        }
+        
+        
+        return false;
+    }
+    
+    public int getIdcourse(String getstring){
+        SQLiteconnection cnn = new SQLiteconnection(); 
+        
+        
+        ResultSet resultset = null;
+        Statement statement = null;
+        
+        
+        cnn.Conectar();
+        
+        String query = "SELECT * FROM course;" ;
+        
+        statement = cnn.criarStatement();
+        
+        try{
+            resultset = statement.executeQuery(query);
+            
+            while(resultset.next()){
+                String namecamp = resultset.getString("c_nome");
+                int id = resultset.getInt("c_code");
+                
+                if(namecamp.equals(getstring)){
+                    return id;
+                }               
+                    
+            }
+                
+            
+        }catch(SQLException e){
+            System.out.println(e);
+        }finally{
+            try{
+                resultset.close();
+                statement.close();
+                cnn.Desconnectar();
+                
+            }catch(SQLException ex){
+                System.out.println("Erro no fechamento");
+            }
+        }
+        
+        
+        return 0;
+    }
+    
+    
+    //faz o login
+    public boolean login(String table, String tag, String tagpass,String text, String textpass){
         
         SQLiteconnection cnn = new SQLiteconnection(); 
         

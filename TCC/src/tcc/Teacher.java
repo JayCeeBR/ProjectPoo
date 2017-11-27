@@ -4,8 +4,11 @@
  * and open the template in the editor.
  */
 package tcc;
+import SQLITE.SQLiteconnection;
 import com.almworks.sqlite4java.SQLiteConnection;
 import java.io.File;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -17,14 +20,17 @@ public class Teacher extends People {
     private String teachingarea;//human sciences, exact sciens etc.
     private String matter;//English, philosophy etc.
     private int salary;
+
+    public Teacher(String teachingarea, String matter, int salary, String login, String passw, String name, String lastname, int age) {
+        super(login, passw, name, lastname, age);
+        this.teachingarea = teachingarea;
+        this.matter = matter;
+        this.salary = salary;
+    }
   
-
-   
-
-    
-    
-    
-    
+     
+        
+ 
     
     public void Teacher(){
         this.admacess = true;
@@ -79,6 +85,43 @@ public class Teacher extends People {
     @Override
     void submitToDB(){
         
+        SQLiteconnection cnn = new SQLiteconnection();
+        
+        cnn.Conectar();
+        
+        String sqlInsert = "INSERT INTO teacher ("
+                + "p_login"
+                + "p_senha"
+                + "p_nome"
+                + "p_sobrenome"
+                + "p_idade"
+                + "p_area"
+                + "p_materia"
+                + "p_salario) VALUES(?,?,?,?,?,?,?,?)";
+        
+        PreparedStatement preparedStatement = cnn.criarPreparedStatement(sqlInsert);
+        
+        try{
+            
+            preparedStatement.setString(1, this.getLogin());
+            preparedStatement.setString(2, this.getPassw());
+            preparedStatement.setString(3, this.getName());
+            preparedStatement.setString(4, this.getLastname());
+            preparedStatement.setInt(5, this.getAge());
+            preparedStatement.setString(6, this.getTeachingarea());
+            preparedStatement.setString(7, this.getMatter());
+            preparedStatement.setInt(8, this.getSalary());
+            
+            
+            int resultado = preparedStatement.executeUpdate();
+            
+            if(resultado == 1){
+                System.out.println("IZI PEACE");
+            }
+            
+        }catch(SQLException e){
+            System.out.println("Fedeu");  
+        }
     }
     
 }

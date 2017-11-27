@@ -113,10 +113,10 @@ public class LoginScreen extends javax.swing.JFrame {
         // Verifica se o nome de usuario e a senha existe
         Main sql = new Main();
         
-        if(sql.exist("student", "a_login", "a_senha",tcUsername.getText().toString(), tcPass.getText().toString()) == true){
+        if(sql.login("student", "a_login", "a_senha",tcUsername.getText().toString(), tcPass.getText().toString()) == true){
             System.out.println("A");
             
-        }else if(sql.exist("teacher", "p_login", "p_senha",tcUsername.getText().toString()  , tcPass.getText().toString()) == true){
+        }else if(sql.login("teacher", "p_login", "p_senha",tcUsername.getText().toString()  , tcPass.getText().toString()) == true){
             System.out.println("B");
         }else{
             System.out.println("End");

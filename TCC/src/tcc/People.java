@@ -19,8 +19,19 @@ public abstract class People {
     
     private int age;
     protected boolean admacess;
+
+    public People(String login, String passw, String name, String lastname, int age) {
+        this.login = login;
+        this.passw = passw;
+        this.name = name;
+        this.lastname = lastname;
+        this.age = age;
+    }
     
-    //login
+    
+
+
+//login
     public String getLogin() {
         return login;
     }
