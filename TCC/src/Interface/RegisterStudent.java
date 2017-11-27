@@ -7,6 +7,7 @@ package Interface;
 
 import SQLITE.Main;
 import java.util.List;
+import tcc.*;
 
 
 /**
@@ -165,18 +166,18 @@ public class RegisterStudent extends javax.swing.JFrame {
     private void btSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSubmitActionPerformed
         // TODO add your handling code here:
         Main main = new Main();
-
+        
+       
+        
         if(main.exist("student", "a_login" ,tcLogin.getText()) == true){
             System.out.println("Esse Login ja existe");
+           
         }else{
-            
-            
+            Student stu = new Student(tcLogin.getText(),tcPass.getText() ,tcName.getText() ,tcLastName.getText(),Integer.parseInt(spAge.getValue().toString()),main.getIdcourse((cbCourse.getSelectedItem().toString())),2,3);
+            stu.submitToDB();
             
             
         }
-        
-        
- 
         
        
         

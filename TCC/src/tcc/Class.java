@@ -14,15 +14,12 @@ import java.util.*;
 public class Class {
     private String classcode;
     private Course course;
-    private List students = new ArrayList();
+   
     
     public void showStudentsAndGrades(Student student){
         //null
     }
     
-    public void registerStudent(Student student){
-        students.add(student);
-    }
     
     public String Showall(){
         return "BAtata";

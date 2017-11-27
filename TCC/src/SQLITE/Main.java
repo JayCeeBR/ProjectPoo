@@ -8,12 +8,16 @@ package SQLITE;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Jerlyson
  */
 public class Main {
+    
+    
     
     public boolean exist(String table,String tag, String text){
         SQLiteconnection cnn = new SQLiteconnection(); 
@@ -38,6 +42,8 @@ public class Main {
                 
                 
                 if(test.equals(text)){
+                   
+                    
                     return true;
                 }               
                     
@@ -47,16 +53,15 @@ public class Main {
         }catch(SQLException e){
             System.out.println(e);
         }finally{
-            try{
+            try {
                 resultset.close();
                 statement.close();
                 cnn.Desconnectar();
-                
-            }catch(SQLException ex){
-                System.out.println("Erro no fechamento");
+            } catch (SQLException ex) {
+                System.out.println("Erro Exist");
             }
+           
         }
-        
         
         return false;
     }
@@ -79,14 +84,17 @@ public class Main {
             resultset = statement.executeQuery(query);
             
             while(resultset.next()){
+                
                 String namecamp = resultset.getString("c_nome");
                 int id = resultset.getInt("c_code");
                 
                 if(namecamp.equals(getstring)){
+                    
                     return id;
                 }               
                     
             }
+            System.out.println("Não Encontrado");
                 
             
         }catch(SQLException e){
@@ -98,12 +106,12 @@ public class Main {
                 cnn.Desconnectar();
                 
             }catch(SQLException ex){
-                System.out.println("Erro no fechamento");
+                System.out.println("Erro idcourse");
             }
         }
         
-        
         return 0;
+        
     }
     
     
@@ -132,6 +140,7 @@ public class Main {
                 String testPass = resultset.getString(tagpass);
                 
                 if(test.equals(text) && testPass.equals(textpass)){
+                                      
                     return true;
                 }               
                     
@@ -147,7 +156,7 @@ public class Main {
                 cnn.Desconnectar();
                 
             }catch(SQLException ex){
-                System.out.println("Erro no fechamento");
+                System.out.println("Erro login");
             }
         }
         
@@ -194,7 +203,7 @@ public class Main {
                 cnn.Desconnectar();
                 
             }catch(SQLException ex){
-                System.out.println("Erro no fechamento");
+                System.out.println("Erro giveme");
             }
         }
         

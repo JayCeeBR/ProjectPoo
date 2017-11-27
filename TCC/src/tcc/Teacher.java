@@ -82,8 +82,8 @@ public class Teacher extends People {
     }
 
     
-    @Override
-    void submitToDB(){
+   
+    public void submitToDB(Teacher tea){
         
         SQLiteconnection cnn = new SQLiteconnection();
         
@@ -103,14 +103,14 @@ public class Teacher extends People {
         
         try{
             
-            preparedStatement.setString(1, this.getLogin());
-            preparedStatement.setString(2, this.getPassw());
-            preparedStatement.setString(3, this.getName());
-            preparedStatement.setString(4, this.getLastname());
-            preparedStatement.setInt(5, this.getAge());
-            preparedStatement.setString(6, this.getTeachingarea());
-            preparedStatement.setString(7, this.getMatter());
-            preparedStatement.setInt(8, this.getSalary());
+            preparedStatement.setString(1, tea.getLogin());
+            preparedStatement.setString(2, tea.getPassw());
+            preparedStatement.setString(3, tea.getName());
+            preparedStatement.setString(4, tea.getLastname());
+            preparedStatement.setInt(5, tea.getAge());
+            preparedStatement.setString(6, tea.getTeachingarea());
+            preparedStatement.setString(7, tea.getMatter());
+            preparedStatement.setInt(8, tea.getSalary());
             
             
             int resultado = preparedStatement.executeUpdate();
