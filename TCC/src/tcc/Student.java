@@ -16,79 +16,28 @@ import java.util.logging.Logger;
  * @author Jerlyson
  */
 public class Student extends People {
-    private String login;
-    private String passw;
-    private String name;
-    private String lastname;
-    private int age;
+ 
     private int course;
-    private int clas;
+    private String clas;
     private int grades;
 
-    public Student(String login, String passw, String name, String lastname, int age, int course, int clas, int grades) {
+    public Student(String login, String passw, String name, String lastname, int age, int course, String clas, int grades) {
         super(login, passw, name, lastname, age);
-        this.login = login;
-        this.passw = passw;
-        this.name = name;
-        this.lastname = lastname;
-        this.age = age;
+     
         this.course = course;
         this.clas = clas;
         this.grades = grades;
     }
 
-    
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassw() {
-        return passw;
-    }
-
-    public void setPassw(String passw) {
-        this.passw = passw;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
    
     
+        
     
-    
-    
-    
-    public int getClas() {
+    public String getClas() {
         return clas;
     }
 
-    public void setClas(int clas) {
+    public void setClas(String clas) {
         this.clas = clas;
     }
 
@@ -123,7 +72,7 @@ public class Student extends People {
     }
     
     
-    public void submitToDB(){
+    public void submitToDB(Student stu){
          
         
         
@@ -140,19 +89,21 @@ public class Student extends People {
                 + "a_curso"
                 + "a_turma"
                 + "a_notas) VALUES(?,?,?,?,?,?,?,?);";
-        PreparedStatement preparedstatement = null;
-        preparedstatement = cnn.criarPreparedStatement(sqlInsert);
+        
+        
+       PreparedStatement preparedstatement =  cnn.criarPreparedStatement(sqlInsert); 
         
         try{
-           
-            preparedstatement.setString(1, this.getLogin());
-            preparedstatement.setString(2, this.getPassw());
-            preparedstatement.setString(3, this.getName());
-            preparedstatement.setString(4, this.getLastname());
-            preparedstatement.setInt(5, this.getAge());
-            preparedstatement.setInt(6, this.getCourse());
-            preparedstatement.setInt(7, this.getClas());
-            preparedstatement.setInt(8, this.getGrades());
+            
+            
+            preparedstatement.setString(1, stu.getLogin());
+            preparedstatement.setString(2, stu.getPassw());
+            preparedstatement.setString(3, stu.getName());
+            preparedstatement.setString(4, stu.getLastname());
+            preparedstatement.setInt(5, stu.getAge());
+            preparedstatement.setInt(6, stu.getCourse());
+            preparedstatement.setString(7, stu.getClas());
+            preparedstatement.setInt(8, stu.getGrades());
             
             
             int resultado = preparedstatement.executeUpdate();

@@ -211,6 +211,141 @@ public class Main {
        
     }
     
+    public String getIdclass(String getclass){
+        SQLiteconnection cnn = new SQLiteconnection(); 
+        
+        
+        ResultSet resultset = null;
+        Statement statement = null;
+        
+        
+        cnn.Conectar();
+        
+        String query = "SELECT * FROM class;" ;
+        
+        statement = cnn.criarStatement();
+        
+        try{
+            resultset = statement.executeQuery(query);
+            
+            while(resultset.next()){
+                
+                String namecamp = resultset.getString("t_course");
+                String id = resultset.getString("t_code");
+                
+                if(namecamp.equals(getclass)){
+                    
+                    return id;
+                }               
+                    
+            }
+            System.out.println("Não Encontrado");
+                
+            
+        }catch(SQLException e){
+            System.out.println(e);
+        }finally{
+            try{
+                resultset.close();
+                statement.close();
+                cnn.Desconnectar();
+                
+            }catch(SQLException ex){
+                System.out.println("Erro idclass");
+            }
+        }
+        
+        return "";
+        
+    }
+    
+    public List<String> codes = new ArrayList<>();
+    
+    public boolean existWhereWithReturn(String table,String tag, String text, String retur){
+        SQLiteconnection cnn = new SQLiteconnection(); 
+        
+        
+        ResultSet resultset = null;
+        Statement statement = null;
+        
+        
+        cnn.Conectar();
+        
+        String query = "SELECT * FROM "+ table + "WHERE "+ tag + "="+ text+";";
+        
+        statement = cnn.criarStatement();
+        
+        try{
+            resultset = statement.executeQuery(query);
+            
+            while(resultset.next()){
+                
+                String test = resultset.getString(retur);
+                codes.add(test);
+                               
+                    
+            }
+                
+            
+        }catch(SQLException e){
+            System.out.println(e);
+        }finally{
+            try {
+                resultset.close();
+                statement.close();
+                cnn.Desconnectar();
+            } catch (SQLException ex) {
+                System.out.println("Erro Exist");
+            }
+           
+        }
+        
+        return false;
+    }
+    
+    public List<String> stun = new ArrayList<>();
+    
+    public boolean existWhere(String table,String tag, String text, String a){
+        SQLiteconnection cnn = new SQLiteconnection(); 
+        
+        
+        ResultSet resultset = null;
+        Statement statement = null;
+        
+        
+        cnn.Conectar();
+        
+        String query = "SELECT * FROM "+ table + "WHERE "+ tag + "="+ text+";";
+        
+        statement = cnn.criarStatement();
+        
+        try{
+            resultset = statement.executeQuery(query);
+            
+            while(resultset.next()){
+                
+                String test = resultset.getString(a);
+                codes.add(test);
+                               
+                    
+            }
+                
+            
+        }catch(SQLException e){
+            System.out.println(e);
+        }finally{
+            try {
+                resultset.close();
+                statement.close();
+                cnn.Desconnectar();
+            } catch (SQLException ex) {
+                System.out.println("Erro Exist");
+            }
+           
+        }
+        
+        return false;
+    }
     
     
     

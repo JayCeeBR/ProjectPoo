@@ -11,13 +11,13 @@ package tcc;
  */
 public abstract class People {
     
-    private String login;
-    private String passw;
+    protected String login;
+    protected String passw;
     
-    private String name;
-    private String lastname;
+    protected String name;
+    protected String lastname;
     
-    private int age;
+    protected int age;
     protected boolean admacess;
 
     public People(String login, String passw, String name, String lastname, int age) {

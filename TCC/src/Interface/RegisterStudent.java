@@ -163,30 +163,53 @@ public class RegisterStudent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tcLastNameActionPerformed
 
+    @SuppressWarnings("empty-statement")
     private void btSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSubmitActionPerformed
         // TODO add your handling code here:
+        
         Main main = new Main();
         
-       
         
-        if(main.exist("student", "a_login" ,tcLogin.getText()) == true){
+        if(main.exist("student", "a_login" ,tcLogin.getText())){
             System.out.println("Esse Login ja existe");
            
         }else{
-            Student stu = new Student(tcLogin.getText(),tcPass.getText() ,tcName.getText() ,tcLastName.getText(),Integer.parseInt(spAge.getValue().toString()),main.getIdcourse((cbCourse.getSelectedItem().toString())),2,3);
-            stu.submitToDB();
             
+            main.existWhereWithReturn("class", "t_course", cbCourse.getSelectedItem().toString(), "t_code");
             
-        }
+            for(String b : main.codes){
+                main.existWhere("student", "a_turma", b, "a_nome");
+                if((main.stun).size() < 30){
+                    
+                    String clasID = main.getIdclass(cbCourse.getSelectedItem().toString());
+                    
+                    Student stu = new Student(tcLogin.getText()
+                        ,tcPass.getText() ,tcName.getText() 
+                        ,tcLastName.getText()
+                        ,Integer.parseInt(spAge.getValue().toString())
+                        ,main.getIdcourse(cbCourse.getSelectedItem().toString())
+                        ,clasID
+                        ,3);
+            
+                    stu.submitToDB(stu);
+                    (main.stun).removeAll(main.stun);
+                    this.setVisible(false);
+                    new LoginScreen().setVisible(true);
+                    break;
+                }
+                (main.stun).removeAll(main.stun);
+                                
+            }
+            (main.codes).removeAll(main.codes);
         
-       
+    }
         
     }//GEN-LAST:event_btSubmitActionPerformed
     
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]){
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
