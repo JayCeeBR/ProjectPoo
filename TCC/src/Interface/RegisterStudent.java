@@ -5,7 +5,7 @@
  */
 package Interface;
 
-import SQLITE.Main;
+import SQLITE.*;
 import java.util.List;
 import tcc.*;
 
@@ -181,7 +181,12 @@ public class RegisterStudent extends javax.swing.JFrame {
                 main.existWhere("student", "a_turma", b, "a_nome");
                 if((main.stun).size() < 30){
                     
-                    String clasID = main.getIdclass(cbCourse.getSelectedItem().toString());
+                    CreateTable ct = new CreateTable();
+                    ct.lenTable("students");
+                    
+                    ct.createTablea(((ct.quant).size())+1);
+                    
+                    String clasID = b;
                     
                     Student stu = new Student(tcLogin.getText()
                         ,tcPass.getText() ,tcName.getText() 
@@ -189,7 +194,7 @@ public class RegisterStudent extends javax.swing.JFrame {
                         ,Integer.parseInt(spAge.getValue().toString())
                         ,main.getIdcourse(cbCourse.getSelectedItem().toString())
                         ,clasID
-                        ,3);
+                        ,((ct.quant).size())+1);
             
                     stu.submitToDB(stu);
                     (main.stun).removeAll(main.stun);

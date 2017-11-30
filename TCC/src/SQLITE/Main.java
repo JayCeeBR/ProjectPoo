@@ -18,7 +18,6 @@ import java.util.logging.Logger;
 public class Main {
     
     
-    
     public boolean exist(String table,String tag, String text){
         SQLiteconnection cnn = new SQLiteconnection(); 
         
@@ -183,7 +182,7 @@ public class Main {
         statement = cnn.criarStatement();
         
         try{
-            String help = "Negaodapiroca";
+            
             resultset = statement.executeQuery(query);
             
             while(resultset.next()){
@@ -271,7 +270,9 @@ public class Main {
         
         cnn.Conectar();
         
-        String query = "SELECT * FROM "+ table + "WHERE "+ tag + "="+ text+";";
+        String query = "SELECT * FROM "+ table + " WHERE "+ tag + "='"+text+"';";
+        
+        System.out.println(query);
         
         statement = cnn.criarStatement();
         
@@ -315,7 +316,7 @@ public class Main {
         
         cnn.Conectar();
         
-        String query = "SELECT * FROM "+ table + "WHERE "+ tag + "="+ text+";";
+        String query = "SELECT * FROM "+ table + "WHERE "+ tag + " = '"+ text+"';";
         
         statement = cnn.criarStatement();
         
@@ -333,10 +334,12 @@ public class Main {
             
         }catch(SQLException e){
             System.out.println(e);
+            
         }finally{
             try {
-                resultset.close();
+                
                 statement.close();
+                //resultset.close();                
                 cnn.Desconnectar();
             } catch (SQLException ex) {
                 System.out.println("Erro Exist");
