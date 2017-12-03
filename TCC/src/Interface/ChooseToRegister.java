@@ -31,6 +31,7 @@ public class ChooseToRegister extends javax.swing.JFrame {
         bChooseTea = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         bChooseStu.setText("Choose Student");
         bChooseStu.addActionListener(new java.awt.event.ActionListener() {

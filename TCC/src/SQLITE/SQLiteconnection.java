@@ -60,6 +60,7 @@ public class SQLiteconnection {
         try{
             return this.conexao.prepareStatement(sql);
         }catch(SQLException e){
+            System.out.println("Erro no preparedStatement");
             return null;
         }
     }

@@ -21,14 +21,7 @@ public class Student extends People {
     private String clas;
     private int grades;
 
-    public Student(String login, String passw, String name, String lastname, int age, int course, String clas, int grades) {
-        super(login, passw, name, lastname, age);
-     
-        this.course = course;
-        this.clas = clas;
-        this.grades = grades;
-    }
-
+  
    
     
         
@@ -67,68 +60,63 @@ public class Student extends People {
     public void seeMissings(){
         //null
     }
-    public void creatTable(){
-        
-    }
-    
-    
+   
     public void submitToDB(Student stu){
-         
-        
-        
         SQLiteconnection cnn = new SQLiteconnection();
         
         cnn.Conectar();
-        
-        String sqlInsert = "INSERT INTO student ("
-                + "a_login"
-                + "a_senha"
-                + "a_nome"
-                + "a_sobrenome"
-                + "a_idade"
-                + "a_curso"
-                + "a_turma"
-                + "a_notas) VALUES(?,?,?,?,?,?,?,?);";
-        
-        
-       PreparedStatement preparedstatement =  cnn.criarPreparedStatement(sqlInsert); 
-        
+
+        String sqlInsert = " INSERT INTO student ("
+                            + "a_login,"
+                            + "a_senha,"
+                            + "a_nome,"
+                            + "a_sobrenome,"
+                            + "a_idade,"
+                            + "a_curso,"
+                            + "a_turma,"
+                            + "a_notas) VALUES(?,?,?,?,?,?,?,?);";
+
+
+        PreparedStatement preparedStatement =  cnn.criarPreparedStatement(sqlInsert); 
+
+
         try{
-            
-            
-            preparedstatement.setString(1, stu.getLogin());
-            preparedstatement.setString(2, stu.getPassw());
-            preparedstatement.setString(3, stu.getName());
-            preparedstatement.setString(4, stu.getLastname());
-            preparedstatement.setInt(5, stu.getAge());
-            preparedstatement.setInt(6, stu.getCourse());
-            preparedstatement.setString(7, stu.getClas());
-            preparedstatement.setInt(8, stu.getGrades());
-            
-            
-            int resultado = preparedstatement.executeUpdate();
-            
-            if(resultado == 1){
-                System.out.println("IZI PEACE");
-            }else{
-                System.out.println("Deu pica");
-            }
-            
-        }catch(SQLException e){
-            System.out.println("Fedeu");  
-        
-        }finally{
-            if(preparedstatement != null){
-                try {
-                    preparedstatement.close();
-                } catch (SQLException ex) {
-                    System.out.println("Erro fechamento");
-                }
-            }
-            cnn.Desconnectar();
-        }
-        
-        
-    }
+             
+             preparedStatement.setString(1, stu.getLogin());
+             preparedStatement.setString(2, stu.getPassw());
+             preparedStatement.setString(3, stu.getName());
+             preparedStatement.setString(4, stu.getLastname());
+             preparedStatement.setInt(5, stu.getAge());
+             preparedStatement.setInt(6, stu.getCourse());
+             preparedStatement.setString(7, stu.getClas());
+             preparedStatement.setInt(8, stu.getGrades());
+
+
+             boolean resultado = preparedStatement.execute();
+             
+             
+             
+             if(resultado == false){
+
+                 System.out.println("IZI PEACE");
+             }else{
+                 System.out.println("Deu pica");
+             }
+
+         }catch(SQLException e){
+             System.out.println("Fedeu");  
+
+         }finally{
+             if(preparedStatement != null){
+                 try {
+                     preparedStatement.close();
+                 } catch (SQLException ex) {
+                     System.out.println("Erro fechamento");
+                 }
+             }
+             cnn.Desconnectar();
+         }
+}
+
     
 }

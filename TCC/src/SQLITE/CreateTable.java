@@ -28,18 +28,17 @@ public class CreateTable {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void createTablea(int id){
+    public void createTablea(String ida){
         
-        String sql = "CREATE TABLE"+ id
-                + "("
-                + "id INTEGER PRIMARY KEY AUTOINCREMENT"
+        String sql = "CREATE TABLE '"+ ida
+                + "' ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "materia VARCHAR(50),"
                 + "nota1 INTEGER,"
                 + "nota2 INTEGER,"
                 + "nota3 INTEGER,"
                 + "nota4 INTEGER,"
-                + "faltas INTEGERs"
-                + ");";
+                + "faltas INTEGER);";
         
         boolean conectou = false;
         

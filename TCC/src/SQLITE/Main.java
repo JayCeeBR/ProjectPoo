@@ -270,9 +270,9 @@ public class Main {
         
         cnn.Conectar();
         
-        String query = "SELECT * FROM "+ table + " WHERE "+ tag + "='"+text+"';";
+        String query = "SELECT * FROM "+ table + " WHERE "+ tag + " = '"+text+"';";
         
-        System.out.println(query);
+        
         
         statement = cnn.criarStatement();
         
@@ -316,7 +316,7 @@ public class Main {
         
         cnn.Conectar();
         
-        String query = "SELECT * FROM "+ table + "WHERE "+ tag + " = '"+ text+"';";
+        String query = "SELECT * FROM "+ table + " WHERE "+ tag + " = '"+ text+"';";
         
         statement = cnn.criarStatement();
         

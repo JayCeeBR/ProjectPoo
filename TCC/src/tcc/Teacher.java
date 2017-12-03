@@ -21,12 +21,7 @@ public class Teacher extends People {
     private String matter;//English, philosophy etc.
     private int salary;
 
-    public Teacher(String teachingarea, String matter, int salary, String login, String passw, String name, String lastname, int age) {
-        super(login, passw, name, lastname, age);
-        this.teachingarea = teachingarea;
-        this.matter = matter;
-        this.salary = salary;
-    }
+    
   
      
         
@@ -90,13 +85,13 @@ public class Teacher extends People {
         cnn.Conectar();
         
         String sqlInsert = "INSERT INTO teacher ("
-                + "p_login"
-                + "p_senha"
-                + "p_nome"
-                + "p_sobrenome"
-                + "p_idade"
-                + "p_area"
-                + "p_materia"
+                + "p_login,"
+                + "p_senha,"
+                + "p_nome,"
+                + "p_sobrenome,"
+                + "p_idade,"
+                + "p_area,"
+                + "p_materia,"
                 + "p_salario) VALUES(?,?,?,?,?,?,?,?)";
         
         PreparedStatement preparedStatement = cnn.criarPreparedStatement(sqlInsert);
